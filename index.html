@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" data-i18n-meta content="Guía digital de huéspedes de Casa La Arboleda, San Bernardo del Viento">
   <meta name="theme-color" content="#0891b2">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>Casa La Arboleda - Guía de Bienvenida</title>
+  <title data-i18n-title>Casa La Arboleda - Guía de Bienvenida</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
   
   <style>
@@ -620,6 +621,22 @@
       opacity: 0.6;
       cursor: not-allowed;
     }
+
+    /* Selector de idioma */
+    .lang-btn {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.5);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      margin-top: 0.35rem;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+    .lang-btn:hover { background: rgba(255,255,255,0.35); }
   </style>
 </head>
 <body>
@@ -629,11 +646,12 @@
     <div class="header-content">
       <div>
         <h1>🏠 Casa La Arboleda</h1>
-        <p class="header-subtitle">📍 Condominio La Caracola</p>
+        <p class="header-subtitle" data-i18n="header.subtitle">📍 Condominio La Caracola</p>
       </div>
       <div class="header-right">
-        <p>👥 10 personas</p>
-        <p class="secondary">🌊 Playa a 750m</p>
+        <p data-i18n="header.capacity">👥 10 personas</p>
+        <p class="secondary" data-i18n="header.beach">🌊 Playa a 750m</p>
+        <button class="lang-btn" id="langToggle" onclick="toggleLang()">EN</button>
       </div>
     </div>
   </header>
@@ -646,19 +664,19 @@
       <button class="section-header normal" onclick="toggleSection('sec-bienvenida')">
         <span class="section-header-left">
           <span class="section-header-icon">🏠</span>
-          <span>Bienvenida</span>
+          <span data-i18n="sec.bienvenida">Bienvenida</span>
         </span>
         <span class="chevron">▼</span>
       </button>
       <div class="section-content">
         <div class="section-inner">
-          <p class="text-center text-gray-700">
+          <p class="text-center text-gray-700" data-i18n="bienvenida.intro">
             ¡Bienvenidos a <strong>Casa La Arboleda</strong>! Esta es su casa durante su estadía 
             en el hermoso San Bernardo del Viento. 🌴
           </p>
           
           <div class="card card-gradient-amber mt-4">
-            <h3>❤️ Su Anfitriona</h3>
+            <h3 data-i18n="bienvenida.hostTitle">❤️ Su Anfitriona</h3>
             <p class="font-semibold text-gray-800">Lina María Puerta Pulgarín</p>
             
             <a href="https://wa.me/573116184376" class="btn btn-green mt-3">
@@ -683,14 +701,14 @@
       <button class="section-header normal" onclick="toggleSection('sec-registro')">
         <span class="section-header-left">
           <span class="section-header-icon">📝</span>
-          <span>Registro de Huéspedes</span>
+          <span data-i18n="sec.registro">Registro de Huéspedes</span>
         </span>
         <span class="chevron">▼</span>
       </button>
       <div class="section-content">
         <div class="section-inner">
           <div class="card card-gradient-amber mb-3">
-            <p class="text-sm text-amber-800">
+            <p class="text-sm text-amber-800" data-i18n="registro.notice">
               <strong>📋 Requisito MinCIT:</strong> Por favor complete este registro obligatorio para todos los huéspedes mayores de edad.
             </p>
           </div>
@@ -698,47 +716,47 @@
           <form id="registroForm" onsubmit="enviarRegistro(event)">
             <!-- Datos personales -->
             <div class="form-group">
-              <label class="form-label">Nombre completo *</label>
-              <input type="text" name="nombre_completo" class="form-input" required placeholder="Como aparece en su documento">
+              <label class="form-label" data-i18n="form.nombreCompleto">Nombre completo *</label>
+              <input type="text" name="nombre_completo" class="form-input" required data-i18n-placeholder="form.ph.nombreCompleto" placeholder="Como aparece en su documento">
             </div>
             
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Tipo documento *</label>
+                <label class="form-label" data-i18n="form.tipoDoc">Tipo documento *</label>
                 <select name="tipo_documento" class="form-input" required>
-                  <option value="">Seleccione...</option>
-                  <option value="CC">Cédula de Ciudadanía</option>
-                  <option value="CE">Cédula de Extranjería</option>
-                  <option value="PA">Pasaporte</option>
-                  <option value="TI">Tarjeta de Identidad</option>
-                  <option value="PEP">PEP</option>
+                  <option value="" data-i18n="form.select">Seleccione...</option>
+                  <option value="CC" data-i18n="form.doc.CC">Cédula de Ciudadanía</option>
+                  <option value="CE" data-i18n="form.doc.CE">Cédula de Extranjería</option>
+                  <option value="PA" data-i18n="form.doc.PA">Pasaporte</option>
+                  <option value="TI" data-i18n="form.doc.TI">Tarjeta de Identidad</option>
+                  <option value="PEP" data-i18n="form.doc.PEP">PEP</option>
                 </select>
               </div>
               <div class="form-group">
-                <label class="form-label">Número documento *</label>
-                <input type="text" name="numero_documento" class="form-input" required placeholder="Sin puntos ni espacios">
+                <label class="form-label" data-i18n="form.numDoc">Número documento *</label>
+                <input type="text" name="numero_documento" class="form-input" required data-i18n-placeholder="form.ph.numDoc" placeholder="Sin puntos ni espacios">
               </div>
             </div>
             
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Fecha nacimiento *</label>
+                <label class="form-label" data-i18n="form.fechaNac">Fecha nacimiento *</label>
                 <input type="date" name="fecha_nacimiento" class="form-input" required>
               </div>
               <div class="form-group">
-                <label class="form-label">Nacionalidad *</label>
-                <input type="text" name="nacionalidad" class="form-input" required placeholder="Ej: Colombiana">
+                <label class="form-label" data-i18n="form.nacionalidad">Nacionalidad *</label>
+                <input type="text" name="nacionalidad" class="form-input" required data-i18n-placeholder="form.ph.nacionalidad" placeholder="Ej: Colombiana">
               </div>
             </div>
             
             <!-- Residencia -->
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Ciudad de residencia *</label>
-                <input type="text" name="ciudad_residencia" class="form-input" required placeholder="Ej: Medellín">
+                <label class="form-label" data-i18n="form.ciudadRes">Ciudad de residencia *</label>
+                <input type="text" name="ciudad_residencia" class="form-input" required data-i18n-placeholder="form.ph.ciudadRes" placeholder="Ej: Medellín">
               </div>
               <div class="form-group">
-                <label class="form-label">País de residencia *</label>
+                <label class="form-label" data-i18n="form.paisRes">País de residencia *</label>
                 <input type="text" name="pais_residencia" class="form-input" required value="Colombia">
               </div>
             </div>
@@ -746,45 +764,45 @@
             <!-- Contacto -->
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Teléfono *</label>
+                <label class="form-label" data-i18n="form.telefono">Teléfono *</label>
                 <input type="tel" name="telefono" class="form-input" required placeholder="Ej: 3001234567">
               </div>
               <div class="form-group">
-                <label class="form-label">Email</label>
-                <input type="email" name="email" class="form-input" placeholder="correo@ejemplo.com">
+                <label class="form-label" data-i18n="form.email">Email</label>
+                <input type="email" name="email" class="form-input" data-i18n-placeholder="form.ph.email" placeholder="correo@ejemplo.com">
               </div>
             </div>
             
             <!-- Estadía -->
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Fecha llegada *</label>
+                <label class="form-label" data-i18n="form.fechaLlegada">Fecha llegada *</label>
                 <input type="date" name="fecha_llegada" class="form-input" required>
               </div>
               <div class="form-group">
-                <label class="form-label">Fecha salida *</label>
+                <label class="form-label" data-i18n="form.fechaSalida">Fecha salida *</label>
                 <input type="date" name="fecha_salida" class="form-input" required>
               </div>
             </div>
             
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Acompañantes</label>
+                <label class="form-label" data-i18n="form.acompanantes">Acompañantes</label>
                 <input type="number" name="num_acompanantes" class="form-input" min="0" max="9" value="0">
               </div>
               <div class="form-group">
-                <label class="form-label">Motivo del viaje *</label>
+                <label class="form-label" data-i18n="form.motivo">Motivo del viaje *</label>
                 <select name="motivo_viaje" class="form-input" required>
-                  <option value="">Seleccione...</option>
-                  <option value="Turismo">Turismo / Vacaciones</option>
-                  <option value="Negocios">Negocios</option>
-                  <option value="Familia">Visita familiar</option>
-                  <option value="Otro">Otro</option>
+                  <option value="" data-i18n="form.select">Seleccione...</option>
+                  <option value="Turismo" data-i18n="form.motivo.turismo">Turismo / Vacaciones</option>
+                  <option value="Negocios" data-i18n="form.motivo.negocios">Negocios</option>
+                  <option value="Familia" data-i18n="form.motivo.familia">Visita familiar</option>
+                  <option value="Otro" data-i18n="form.motivo.otro">Otro</option>
                 </select>
               </div>
             </div>
             
-            <button type="submit" id="btnEnviar" class="btn btn-green mt-4">
+            <button type="submit" id="btnEnviar" class="btn btn-green mt-4" data-i18n="form.btnEnviar">
               📤 Enviar Registro
             </button>
             
@@ -799,62 +817,62 @@
       <button class="section-header normal" onclick="toggleSection('sec-como-llegar')">
         <span class="section-header-left">
           <span class="section-header-icon">🗺️</span>
-          <span>Cómo Llegar</span>
+          <span data-i18n="sec.comoLlegar">Cómo Llegar</span>
         </span>
         <span class="chevron">▼</span>
       </button>
       <div class="section-content">
         <div class="section-inner">
           <div class="card card-gradient-blue mb-3">
-            <p class="text-sm text-blue-800">
+            <p class="text-sm text-blue-800" data-i18n="llegar.destino">
               <strong>📍 Destino:</strong> Urbanización La Caracola (Lote 42)<br>
               Km 8, vía San Bernardo del Viento → Moñitos, Córdoba
             </p>
           </div>
           
-          <h4 class="text-gray-700 mb-3">🚗 Desde Montería (dos rutas):</h4>
+          <h4 class="text-gray-700 mb-3" data-i18n="llegar.desdeMonteria">🚗 Desde Montería (dos rutas):</h4>
           
           <div class="card card-green mb-3" style="border-left: 4px solid #22c55e;">
             <div class="flex items-center gap-2 mb-2">
               <span style="font-size: 1.25rem;">⭐</span>
-              <h4 class="text-green-800">Ruta 1: Vía Santa Lucía (Recomendada)</h4>
+              <h4 class="text-green-800" data-i18n="llegar.ruta1">Ruta 1: Vía Santa Lucía (Recomendada)</h4>
             </div>
             <ul class="text-sm text-gray-600">
-              <li>⏱️ <strong>Tiempo:</strong> ~1 hora 30 minutos</li>
-              <li>💰 <strong>Peajes:</strong> Sin peajes</li>
-              <li>🛣️ <strong>Estado:</strong> En construcción pero adelantada. Sin huecos. Algunos tramos destapados en buen estado.</li>
+              <li data-i18n="llegar.r1.tiempo">⏱️ <strong>Tiempo:</strong> ~1 hora 30 minutos</li>
+              <li data-i18n="llegar.r1.peajes">💰 <strong>Peajes:</strong> Sin peajes</li>
+              <li data-i18n="llegar.r1.estado">🛣️ <strong>Estado:</strong> En construcción pero adelantada. Sin huecos. Algunos tramos destapados en buen estado.</li>
             </ul>
           </div>
           
           <div class="card card-amber mb-3" style="border-left: 4px solid #f59e0b;">
-            <h4 class="text-amber-800 mb-2">Ruta 2: Vía Lorica</h4>
+            <h4 class="text-amber-800 mb-2" data-i18n="llegar.ruta2">Ruta 2: Vía Lorica</h4>
             <p class="text-xs text-gray-500 mb-2">Montería → Lorica → San Bernardo → Moñitos</p>
             <ul class="text-sm text-gray-600">
-              <li>⏱️ <strong>Tiempo:</strong> ~1 hora 45 minutos</li>
-              <li>💰 <strong>Peajes:</strong> 2 peajes</li>
-              <li>🛣️ <strong>Estado:</strong> Bien pavimentada hasta Lorica. Mal estado con huecos entre Lorica y San Bernardo.</li>
+              <li data-i18n="llegar.r2.tiempo">⏱️ <strong>Tiempo:</strong> ~1 hora 45 minutos</li>
+              <li data-i18n="llegar.r2.peajes">💰 <strong>Peajes:</strong> 2 peajes</li>
+              <li data-i18n="llegar.r2.estado">🛣️ <strong>Estado:</strong> Bien pavimentada hasta Lorica. Mal estado con huecos entre Lorica y San Bernardo.</li>
             </ul>
           </div>
           
           <div class="card card-purple">
-            <h4 class="text-purple-800 mb-2">✈️ Desde el Aeropuerto</h4>
-            <p class="text-sm text-gray-600">
+            <h4 class="text-purple-800 mb-2" data-i18n="llegar.aeropuerto">✈️ Desde el Aeropuerto</h4>
+            <p class="text-sm text-gray-600" data-i18n="llegar.aero.desc">
               Si vienen sin carro, coordinen con los transportadores para que los recojan en el aeropuerto.
             </p>
-            <p class="text-sm text-purple-700 mt-2">
+            <p class="text-sm text-purple-700 mt-2" data-i18n="llegar.aero.precio">
               <strong>💵 Precio:</strong> $200,000 - $250,000 COP por trayecto (hasta 4 personas)
             </p>
-            <p class="text-xs text-gray-500 mt-2">
+            <p class="text-xs text-gray-500 mt-2" data-i18n="llegar.aero.tip">
               💡 Pueden coordinar mercado en Montería o Lorica en el camino.
             </p>
           </div>
           
-          <h4 class="text-gray-700 mt-4 mb-3">📞 Transportadores de confianza:</h4>
+          <h4 class="text-gray-700 mt-4 mb-3" data-i18n="llegar.transportadores">📞 Transportadores de confianza:</h4>
           
           <a href="tel:3136417387" class="contact-card card-blue">
             <div>
               <div class="contact-name">🚗 Mario Villa</div>
-              <div class="contact-desc">Vive en Lorica - Persona de confianza</div>
+              <div class="contact-desc" data-i18n="trans.marioVilla">Vive en Lorica - Persona de confianza</div>
             </div>
             <span class="contact-phone text-blue-600">313-641-7387</span>
           </a>
@@ -862,7 +880,7 @@
           <a href="tel:3003398930" class="contact-card card-blue">
             <div>
               <div class="contact-name">🚕 Héctor</div>
-              <div class="contact-desc">Taxi Montería-Lorica-La Caracola</div>
+              <div class="contact-desc" data-i18n="trans.hector">Taxi Montería-Lorica-La Caracola</div>
             </div>
             <span class="contact-phone text-blue-600">300-339-8930</span>
           </a>
@@ -878,7 +896,7 @@
           <a href="tel:3205552373" class="contact-card card-blue">
             <div>
               <div class="contact-name">🚗 Fabio</div>
-              <div class="contact-desc">Transporte Lorica-La Caracola</div>
+              <div class="contact-desc" data-i18n="trans.fabio">Transporte Lorica-La Caracola</div>
             </div>
             <span class="contact-phone text-blue-600">320-555-2373</span>
           </a>
@@ -891,14 +909,14 @@
       <button class="section-header normal" onclick="toggleSection('sec-llaves')">
         <span class="section-header-left">
           <span class="section-header-icon">🔑</span>
-          <span>Llaves y Acceso</span>
+          <span data-i18n="sec.llaves">Llaves y Acceso</span>
         </span>
         <span class="chevron">▼</span>
       </button>
       <div class="section-content">
         <div class="section-inner">
           <div class="card card-amber mb-3">
-            <p class="text-sm text-amber-800">
+            <p class="text-sm text-amber-800" data-i18n="llaves.ubicacion">
               <strong>📍 Ubicación:</strong> Todas las llaves se encuentran en el <strong>llavero sobre la mesa</strong>.
             </p>
           </div>
@@ -906,37 +924,37 @@
           <div class="rule-item">
             <span class="rule-icon">🚗</span>
             <div>
-              <div class="font-semibold text-gray-800">Control de acceso La Caracola</div>
-              <div class="text-sm text-gray-600">Control cuadrado - Abre la puerta de entrada a la urbanización</div>
+              <div class="font-semibold text-gray-800" data-i18n="llaves.control.titulo">Control de acceso La Caracola</div>
+              <div class="text-sm text-gray-600" data-i18n="llaves.control.desc">Control cuadrado - Abre la puerta de entrada a la urbanización</div>
             </div>
           </div>
           
           <div class="rule-item">
             <span class="rule-icon">🚪</span>
             <div>
-              <div class="font-semibold text-gray-800">Puerta vehicular y peatonal</div>
-              <div class="text-sm text-gray-600">Llave del candado para acceso a la casa</div>
+              <div class="font-semibold text-gray-800" data-i18n="llaves.vehicular.titulo">Puerta vehicular y peatonal</div>
+              <div class="text-sm text-gray-600" data-i18n="llaves.vehicular.desc">Llave del candado para acceso a la casa</div>
             </div>
           </div>
           
           <div class="rule-item">
             <span class="rule-icon">🍳</span>
             <div>
-              <div class="font-semibold text-gray-800">Puerta de la cocina</div>
-              <div class="text-sm text-gray-600">Llave de acceso a la cocina</div>
+              <div class="font-semibold text-gray-800" data-i18n="llaves.cocina.titulo">Puerta de la cocina</div>
+              <div class="text-sm text-gray-600" data-i18n="llaves.cocina.desc">Llave de acceso a la cocina</div>
             </div>
           </div>
           
           <div class="rule-item">
             <span class="rule-icon">🏖️</span>
             <div>
-              <div class="font-semibold text-gray-800">Acceso a la playa</div>
-              <div class="text-sm text-gray-600">Llave para la salida directa a la playa</div>
+              <div class="font-semibold text-gray-800" data-i18n="llaves.playa.titulo">Acceso a la playa</div>
+              <div class="text-sm text-gray-600" data-i18n="llaves.playa.desc">Llave para la salida directa a la playa</div>
             </div>
           </div>
           
           <div class="card card-green mt-3">
-            <p class="text-sm text-green-700">
+            <p class="text-sm text-green-700" data-i18n="llaves.tip">
               <strong>💡 Tip:</strong> Al salir, asegúrese de cerrar bien todos los candados y devolver las llaves al llavero sobre la mesa.
             </p>
           </div>
@@ -949,7 +967,7 @@
       <button class="section-header normal" onclick="toggleSection('sec-wifi')" style="background: linear-gradient(90deg, #f59e0b, #eab308); color: white;">
         <span class="section-header-left">
           <span class="section-header-icon">📶</span>
-          <span>Conectividad</span>
+          <span data-i18n="sec.wifi">Conectividad</span>
         </span>
         <span class="chevron">▼</span>
       </button>
@@ -957,12 +975,12 @@
         <div class="section-inner">
           <div style="background: linear-gradient(135deg, #fef3c7, #fed7aa); border: 2px solid #f59e0b; border-radius: 0.75rem; padding: 1rem; text-align: center;">
             <div style="font-size: 2rem; margin-bottom: 0.5rem;">📵</div>
-            <div style="font-weight: 700; color: #92400e;">NO hay WiFi en la casa</div>
+            <div style="font-weight: 700; color: #92400e;" data-i18n="wifi.noWifi">NO hay WiFi en la casa</div>
           </div>
           
           <div class="card card-gradient-teal mt-4">
-            <h4 class="text-teal-700 mb-2">📱 Alternativa: SIM Card Tigo</h4>
-            <p class="text-sm text-gray-600">
+            <h4 class="text-teal-700 mb-2" data-i18n="wifi.sim.titulo">📱 Alternativa: SIM Card Tigo</h4>
+            <p class="text-sm text-gray-600" data-i18n="wifi.sim.desc">
               Hay una tarjeta SIM prepago Tigo disponible si la necesitan:
             </p>
             <p class="font-bold text-teal-800 text-center mt-2" style="font-size: 1.25rem;">
@@ -971,7 +989,7 @@
           </div>
           
           <div class="card card-amber mt-3">
-            <p class="text-sm text-amber-800">
+            <p class="text-sm text-amber-800" data-i18n="wifi.cobertura">
               <strong>📱 Mejor señal celular:</strong> Tigo tiene la mejor cobertura en la zona. 
               Claro y Movistar tienen señal moderada. Mejor señal cerca del muelle (2 km).
             </p>
@@ -985,7 +1003,7 @@
       <button class="section-header normal" onclick="toggleSection('sec-habitaciones')">
         <span class="section-header-left">
           <span class="section-header-icon">🛏️</span>
-          <span>Habitaciones</span>
+          <span data-i18n="sec.habitaciones">Habitaciones</span>
         </span>
         <span class="chevron">▼</span>
       </button>
@@ -994,29 +1012,29 @@
           <div class="room-card room-principal">
             <div class="room-header">
               <div>
-                <h4 class="text-gray-800">Habitación Principal</h4>
-                <p class="text-sm text-gray-600">1 cama doble (Queen/King)</p>
+                <h4 class="text-gray-800" data-i18n="hab.principal.nombre">Habitación Principal</h4>
+                <p class="text-sm text-gray-600" data-i18n="hab.principal.cama">1 cama doble (Queen/King)</p>
               </div>
-              <span class="room-badge badge-blue">❄️ A/C</span>
+              <span class="room-badge badge-blue" data-i18n="hab.ac">❄️ A/C</span>
             </div>
-            <p class="text-xs text-gray-500 mt-2">👥 Capacidad: 2 personas</p>
+            <p class="text-xs text-gray-500 mt-2" data-i18n="hab.principal.cap">👥 Capacidad: 2 personas</p>
           </div>
           
           <div class="room-card room-huesped">
             <div class="room-header">
               <div>
-                <h4 class="text-gray-800">Habitación Huéspedes 1</h4>
-                <p class="text-sm text-gray-600">1 cama doble + camarote (2 sencillas)</p>
+                <h4 class="text-gray-800" data-i18n="hab.huesped1.nombre">Habitación Huéspedes 1</h4>
+                <p class="text-sm text-gray-600" data-i18n="hab.huesped.cama">1 cama doble + camarote (2 sencillas)</p>
               </div>
-              <span class="room-badge badge-amber">🌀 Ventilador</span>
+              <span class="room-badge badge-amber" data-i18n="hab.ventilador">🌀 Ventilador</span>
             </div>
-            <p class="text-xs text-gray-500 mt-2">👥 Capacidad: 4 personas</p>
+            <p class="text-xs text-gray-500 mt-2" data-i18n="hab.huesped.cap">👥 Capacidad: 4 personas</p>
           </div>
           
           <div class="room-card room-huesped">
             <div class="room-header">
               <div>
-                <h4 class="text-gray-800">Habitación Huéspedes 2</h4>
+                <h4 class="text-gray-800" data-i18n="hab.huesped2.nombre">Habitación Huéspedes 2</h4>
                 <p class="text-sm text-gray-600">1 cama doble + camarote (2 sencillas)</p>
               </div>
               <span class="room-badge badge-amber">🌀 Ventilador</span>
@@ -1025,7 +1043,7 @@
           </div>
           
           <div class="card card-gray text-center mt-3">
-            <p class="font-semibold text-gray-800">🏠 Total: 10 personas cómodamente</p>
+            <p class="font-semibold text-gray-800" data-i18n="hab.total">🏠 Total: 10 personas cómodamente</p>
           </div>
         </div>
       </div>
@@ -1036,7 +1054,7 @@
       <button class="section-header normal" onclick="toggleSection('sec-cocina')">
         <span class="section-header-left">
           <span class="section-header-icon">🍳</span>
-          <span>Cocina</span>
+          <span data-i18n="sec.cocina">Cocina</span>
         </span>
         <span class="chevron">▼</span>
       </button>
@@ -1045,45 +1063,45 @@
           <div class="appliance-grid">
             <div class="appliance-item">
               <div class="appliance-icon">🧊</div>
-              <div class="appliance-name">Nevera</div>
-              <div class="appliance-tip">Nivel 3-4</div>
+              <div class="appliance-name" data-i18n="app.nevera">Nevera</div>
+              <div class="appliance-tip" data-i18n="app.nevera.tip">Nivel 3-4</div>
             </div>
             <div class="appliance-item">
               <div class="appliance-icon">🔥</div>
-              <div class="appliance-name">Estufa</div>
-              <div class="appliance-tip">Gas propano</div>
+              <div class="appliance-name" data-i18n="app.estufa">Estufa</div>
+              <div class="appliance-tip" data-i18n="app.estufa.tip">Gas propano</div>
             </div>
             <div class="appliance-item">
               <div class="appliance-icon">📦</div>
-              <div class="appliance-name">Microondas</div>
-              <div class="appliance-tip">Máx 5 min</div>
+              <div class="appliance-name" data-i18n="app.micro">Microondas</div>
+              <div class="appliance-tip" data-i18n="app.micro.tip">Máx 5 min</div>
             </div>
             <div class="appliance-item">
               <div class="appliance-icon">🥤</div>
-              <div class="appliance-name">Licuadora</div>
-              <div class="appliance-tip">Usar tapa</div>
+              <div class="appliance-name" data-i18n="app.licua">Licuadora</div>
+              <div class="appliance-tip" data-i18n="app.licua.tip">Usar tapa</div>
             </div>
             <div class="appliance-item">
               <div class="appliance-icon">☕</div>
-              <div class="appliance-name">Cafetera</div>
+              <div class="appliance-name" data-i18n="app.cafe">Cafetera</div>
               <div class="appliance-tip"></div>
             </div>
             <div class="appliance-item">
               <div class="appliance-icon">🍚</div>
-              <div class="appliance-name">Olla Arrocera</div>
-              <div class="appliance-tip">1:2 arroz/agua</div>
+              <div class="appliance-name" data-i18n="app.arroz">Olla Arrocera</div>
+              <div class="appliance-tip" data-i18n="app.arroz.tip">1:2 arroz/agua</div>
             </div>
           </div>
           
           <div class="card card-blue">
-            <p class="text-sm text-blue-800">
+            <p class="text-sm text-blue-800" data-i18n="cocina.incluye">
               <strong>🍴 Incluye:</strong> Vajilla completa para 10 personas, ollas, sartenes, cubiertos, 
               tabla de cortar, abrelatas, sacacorchos.
             </p>
           </div>
           
           <div class="card card-amber mt-3">
-            <p class="text-sm text-amber-800">
+            <p class="text-sm text-amber-800" data-i18n="cocina.gas">
               <strong>⚠️ Gas:</strong> Si huelen a gas, cerrar llave principal en el cuarto útil y contactar anfitriona.
             </p>
           </div>
@@ -1096,7 +1114,7 @@
       <button class="section-header alert-header" onclick="toggleSection('sec-agua')">
         <span class="section-header-left">
           <span class="section-header-icon">⚠️</span>
-          <span>AGUA - IMPORTANTE</span>
+          <span data-i18n="sec.agua">AGUA - IMPORTANTE</span>
         </span>
         <span class="chevron">▼</span>
       </button>
@@ -1104,25 +1122,25 @@
         <div class="section-inner">
           <div class="water-alert">
             <div class="water-alert-icon">⚠️</div>
-            <div class="water-alert-title">EL AGUA DEL GRIFO NO ES POTABLE</div>
+            <div class="water-alert-title" data-i18n="agua.titulo">EL AGUA DEL GRIFO NO ES POTABLE</div>
           </div>
           
           <div class="water-item card-red">
             <span class="water-icon">❌</span>
             <div>
-              <p class="font-semibold text-red-700">NO beber del grifo</p>
-              <p class="text-sm text-red-600">Ni agua de la ducha o llave</p>
+              <p class="font-semibold text-red-700" data-i18n="agua.noBeber">NO beber del grifo</p>
+              <p class="text-sm text-red-600" data-i18n="agua.noBeber.sub">Ni agua de la ducha o llave</p>
             </div>
           </div>
           
           <div class="water-item card-green">
             <span class="water-icon">✅</span>
             <div>
-              <p class="font-semibold text-green-700">Solo usar para:</p>
+              <p class="font-semibold text-green-700" data-i18n="agua.usarPara">Solo usar para:</p>
               <ul class="text-sm text-green-600 mt-2">
-                <li>• Ducharse</li>
-                <li>• Lavar platos</li>
-                <li>• Cocinar (hirviendo 5+ minutos)</li>
+                <li data-i18n="agua.uso1">• Ducharse</li>
+                <li data-i18n="agua.uso2">• Lavar platos</li>
+                <li data-i18n="agua.uso3">• Cocinar (hirviendo 5+ minutos)</li>
               </ul>
             </div>
           </div>
@@ -1130,8 +1148,8 @@
           <div class="water-item card-blue">
             <span class="water-icon">💧</span>
             <div>
-              <p class="font-semibold text-blue-800">Para beber:</p>
-              <p class="text-sm text-blue-600">
+              <p class="font-semibold text-blue-800" data-i18n="agua.paraBeber">Para beber:</p>
+              <p class="text-sm text-blue-600" data-i18n="agua.paraBeber.desc">
                 Comprar agua embotellada en el centro de San Bernardo (2 km). 
                 Recomendación: garrafones grandes (más económico).
               </p>
@@ -1146,38 +1164,38 @@
       <button class="section-header normal" onclick="toggleSection('sec-playa')">
         <span class="section-header-left">
           <span class="section-header-icon">🏖️</span>
-          <span>Playa y Piscina</span>
+          <span data-i18n="sec.playa">Playa y Piscina</span>
         </span>
         <span class="chevron">▼</span>
       </button>
       <div class="section-content">
         <div class="section-inner">
           <div class="card card-gradient-cyan">
-            <h4 class="text-blue-800 mb-2">🌊 Playa</h4>
+            <h4 class="text-blue-800 mb-2" data-i18n="playa.titulo">🌊 Playa</h4>
             <div class="grid-2 text-sm">
-              <p><strong>Distancia:</strong> 750m</p>
-              <p><strong>Tiempo:</strong> 10 min a pie / 2 min en carro</p>
+              <p data-i18n="playa.distancia"><strong>Distancia:</strong> 750m</p>
+              <p data-i18n="playa.tiempo"><strong>Tiempo:</strong> 10 min a pie / 2 min en carro</p>
             </div>
-            <p class="text-sm text-gray-600 mt-2">
+            <p class="text-sm text-gray-600 mt-2" data-i18n="playa.desc">
               Arena suave, olas tranquilas, ideal para familias. 🏄 San Bernardo es famoso por el surf.
             </p>
-            <p class="text-sm text-teal-700 mt-2">
+            <p class="text-sm text-teal-700 mt-2" data-i18n="playa.amenidades">
               <strong>🏖️ Amenidades:</strong> Pueden usar 2 quioscos y 2 enramadas que pertenecen a la urbanización.
             </p>
           </div>
           
           <div class="card card-gradient-teal">
-            <h4 class="text-teal-800 mb-2">🏊 Piscina del Condominio</h4>
-            <p class="text-sm"><strong>Horario:</strong> 9:00 AM - 9:00 PM</p>
+            <h4 class="text-teal-800 mb-2" data-i18n="piscina.titulo">🏊 Piscina del Condominio</h4>
+            <p class="text-sm" data-i18n="piscina.horario"><strong>Horario:</strong> 9:00 AM - 9:00 PM</p>
             <ul class="text-sm text-gray-600 mt-2">
-              <li>• Ducharse antes de entrar</li>
-              <li>• NO vidrio en el área</li>
-              <li>• Niños siempre supervisados</li>
+              <li data-i18n="piscina.r1">• Ducharse antes de entrar</li>
+              <li data-i18n="piscina.r2">• NO vidrio en el área</li>
+              <li data-i18n="piscina.r3">• Niños siempre supervisados</li>
             </ul>
           </div>
           
           <div class="card card-amber">
-            <p class="text-sm text-amber-800">
+            <p class="text-sm text-amber-800" data-i18n="playa.seguridad">
               <strong>⚠️ Seguridad:</strong> No nadar solos. Cuidado con corrientes. 
               No nadar bajo efectos del alcohol ni de noche.
             </p>
@@ -1191,7 +1209,7 @@
       <button class="section-header normal" onclick="toggleSection('sec-normas')">
         <span class="section-header-left">
           <span class="section-header-icon">📋</span>
-          <span>Normas del Condominio</span>
+          <span data-i18n="sec.normas">Normas del Condominio</span>
         </span>
         <span class="chevron">▼</span>
       </button>
@@ -1199,31 +1217,31 @@
         <div class="section-inner">
           <div class="rule-item">
             <span class="rule-icon">🔇</span>
-            <span class="rule-text">Horario de silencio: 10PM - 7AM</span>
+            <span class="rule-text" data-i18n="norma.silencio">Horario de silencio: 10PM - 7AM</span>
           </div>
           <div class="rule-item">
             <span class="rule-icon">🚗</span>
-            <span class="rule-text">Velocidad máxima: 20 km/h</span>
+            <span class="rule-text" data-i18n="norma.velocidad">Velocidad máxima: 20 km/h</span>
           </div>
           <div class="rule-item">
             <span class="rule-icon">🎫</span>
-            <span class="rule-text">Identificarse con vigilancia al entrar</span>
+            <span class="rule-text" data-i18n="norma.identificarse">Identificarse con vigilancia al entrar</span>
           </div>
           <div class="rule-item">
             <span class="rule-icon">👥</span>
-            <span class="rule-text">Registrar visitas en portería</span>
+            <span class="rule-text" data-i18n="norma.visitas">Registrar visitas en portería</span>
           </div>
           <div class="rule-item">
             <span class="rule-icon">🗑️</span>
-            <span class="rule-text">Basuras en contenedores designados</span>
+            <span class="rule-text" data-i18n="norma.basuras">Basuras en contenedores designados</span>
           </div>
           <div class="rule-item">
             <span class="rule-icon">🤝</span>
-            <span class="rule-text">Saludar y ser cortés con vecinos</span>
+            <span class="rule-text" data-i18n="norma.cortesia">Saludar y ser cortés con vecinos</span>
           </div>
           
           <div class="card card-green mt-3">
-            <p class="text-sm text-green-700">
+            <p class="text-sm text-green-700" data-i18n="norma.vigilancia">
               🛡️ <strong>Vigilancia 24/7</strong> en entrada del condominio
             </p>
           </div>
@@ -1236,7 +1254,7 @@
       <button class="section-header normal" onclick="toggleSection('sec-emergencias')">
         <span class="section-header-left">
           <span class="section-header-icon">🚨</span>
-          <span>Emergencias</span>
+          <span data-i18n="sec.emergencias">Emergencias</span>
         </span>
         <span class="chevron">▼</span>
       </button>
@@ -1245,24 +1263,24 @@
           <div class="emergency-grid">
             <a href="tel:123" class="emergency-btn emergency-red">
               <div class="emergency-number">123</div>
-              <div class="emergency-label">Policía</div>
+              <div class="emergency-label" data-i18n="emerg.policia">Policía</div>
             </a>
             <a href="tel:125" class="emergency-btn emergency-red">
               <div class="emergency-number">125</div>
-              <div class="emergency-label">Ambulancia</div>
+              <div class="emergency-label" data-i18n="emerg.ambulancia">Ambulancia</div>
             </a>
             <a href="tel:119" class="emergency-btn emergency-orange">
               <div class="emergency-number">119</div>
-              <div class="emergency-label">Bomberos</div>
+              <div class="emergency-label" data-i18n="emerg.bomberos">Bomberos</div>
             </a>
             <a href="tel:144" class="emergency-btn emergency-yellow">
               <div class="emergency-number">144</div>
-              <div class="emergency-label">Defensa Civil</div>
+              <div class="emergency-label" data-i18n="emerg.defensaCivil">Defensa Civil</div>
             </a>
           </div>
           
           <div class="card card-blue mt-4">
-            <p class="text-sm text-blue-800">
+            <p class="text-sm text-blue-800" data-i18n="emerg.energia">
               <strong>⚡ Corte de energía:</strong> Afinia 018000 114 011
             </p>
           </div>
@@ -1270,18 +1288,18 @@
           <div class="card card-green mt-3">
             <p class="text-sm text-green-800">
               <strong>🏠 Juan Carlos Raveles (vecino de confianza):</strong> 302-307-6859<br>
-              <span class="text-xs text-green-600">Vive enfrente. Contactar para cualquier asunto relacionado con la casa.</span>
+              <span class="text-xs text-green-600" data-i18n="emerg.vecino.sub">Vive enfrente. Contactar para cualquier asunto relacionado con la casa.</span>
             </p>
           </div>
           
           <div class="card card-amber mt-3">
             <p class="text-sm text-amber-800">
               <strong>🔒 Alexander Pájaro (Conserje La Caracola):</strong> 304-441-3378<br>
-              <span class="text-xs text-amber-600">Vive en la urbanización. Avisarle cuando se saque basura.</span>
+              <span class="text-xs text-amber-600" data-i18n="emerg.conserje.sub">Vive en la urbanización. Avisarle cuando se saque basura.</span>
             </p>
           </div>
           
-          <a href="https://wa.me/573116184376" class="btn btn-green mt-3">
+          <a href="https://wa.me/573116184376" class="btn btn-green mt-3" data-i18n="emerg.contactarAnfitriona">
             💬 Contactar anfitriona (24/7)
           </a>
         </div>
@@ -1293,7 +1311,7 @@
       <button class="section-header normal" onclick="toggleSection('sec-restaurantes')">
         <span class="section-header-left">
           <span class="section-header-icon">🍽️</span>
-          <span>Restaurantes</span>
+          <span data-i18n="sec.restaurantes">Restaurantes</span>
         </span>
         <span class="chevron">▼</span>
       </button>
@@ -1304,9 +1322,9 @@
               <span style="font-size: 1.5rem;">⭐</span>
               <div>
                 <h4 class="text-gray-800">Hotel Los Tambos del Caribe</h4>
-                <p class="text-sm text-gray-600">Mariscos frescos, comida típica costeña</p>
-                <p class="text-xs text-gray-500 mt-2">📍 300m sobre la carretera a Moñitos | 💰 $$ - $$$</p>
-                <p class="text-sm text-amber-700 mt-2">
+                <p class="text-sm text-gray-600" data-i18n="rest.tambos.desc">Mariscos frescos, comida típica costeña</p>
+                <p class="text-xs text-gray-500 mt-2" data-i18n="rest.tambos.ubicacion">📍 300m sobre la carretera a Moñitos | 💰 $$ - $$$</p>
+                <p class="text-sm text-amber-700 mt-2" data-i18n="rest.tambos.reco">
                   <strong>Recomendación:</strong> Pargo rojo frito, arroz con coco
                 </p>
                 <a href="tel:3004113089" class="btn btn-amber mt-3" style="display: inline-flex; width: auto;">
@@ -1321,8 +1339,8 @@
               <span style="font-size: 1.5rem;">🌅</span>
               <div>
                 <h4 class="text-gray-800">Hotel Mirador Bahía Rada</h4>
-                <p class="text-sm text-gray-600">Hotel y restaurante con una bella vista. Menú diario y comida a la carta.</p>
-                <p class="text-xs text-gray-500 mt-2">📍 A 15 minutos en carro, vía a Moñitos | 💰 $$ - $$$</p>
+                <p class="text-sm text-gray-600" data-i18n="rest.mirador.desc">Hotel y restaurante con una bella vista. Menú diario y comida a la carta.</p>
+                <p class="text-xs text-gray-500 mt-2" data-i18n="rest.mirador.ubicacion">📍 A 15 minutos en carro, vía a Moñitos | 💰 $$ - $$$</p>
                 <a href="tel:3044481280" class="btn btn-blue mt-3" style="display: inline-flex; width: auto;">
                   📞 304-448-1280
                 </a>
@@ -1331,18 +1349,18 @@
           </div>
           
           <div class="card card-green mt-3">
-            <h4 class="text-gray-700 mb-2">🍲 Almuerzos a domicilio</h4>
-            <p class="text-sm text-gray-600">Jhamer Bravo - Almuerzos caseros</p>
+            <h4 class="text-gray-700 mb-2" data-i18n="rest.domicilio.titulo">🍲 Almuerzos a domicilio</h4>
+            <p class="text-sm text-gray-600" data-i18n="rest.domicilio.desc">Jhamer Bravo - Almuerzos caseros</p>
             <a href="tel:3014456141" class="text-green-600 text-sm font-semibold">📞 301-445-6141</a>
           </div>
           
           <div class="card card-gray mt-3">
-            <h4 class="text-gray-700 mb-2">🍴 Platos típicos que probar:</h4>
+            <h4 class="text-gray-700 mb-2" data-i18n="rest.platos.titulo">🍴 Platos típicos que probar:</h4>
             <div class="grid-2 text-sm text-gray-600">
-              <p>🦞 Pargo rojo frito</p>
-              <p>🍚 Arroz con coco</p>
-              <p>🦐 Cazuela de mariscos</p>
-              <p>🥥 Limonada de coco</p>
+              <p data-i18n="rest.plato1">🦞 Pargo rojo frito</p>
+              <p data-i18n="rest.plato2">🍚 Arroz con coco</p>
+              <p data-i18n="rest.plato3">🦐 Cazuela de mariscos</p>
+              <p data-i18n="rest.plato4">🥥 Limonada de coco</p>
             </div>
           </div>
         </div>
@@ -1354,7 +1372,7 @@
       <button class="section-header normal" onclick="toggleSection('sec-actividades')">
         <span class="section-header-left">
           <span class="section-header-icon">🎯</span>
-          <span>Actividades</span>
+          <span data-i18n="sec.actividades">Actividades</span>
         </span>
         <span class="chevron">▼</span>
       </button>
@@ -1364,8 +1382,8 @@
             <div class="activity-header">
               <div class="activity-icon">🐬</div>
               <div>
-                <div class="activity-title">La Cienaguita</div>
-                <div class="activity-desc">Laguna natural con chigüiros. Paseos en lancha, avistamiento de fauna, fotografía.</div>
+                <div class="activity-title" data-i18n="act.cienaguita.titulo">La Cienaguita</div>
+                <div class="activity-desc" data-i18n="act.cienaguita.desc">Laguna natural con chigüiros. Paseos en lancha, avistamiento de fauna, fotografía.</div>
                 <div class="activity-distance">📍 Corregimiento El Castillo</div>
                 <a href="tel:3113936590" class="activity-contact">📞 311-393-6590 (Adonilson)</a>
               </div>
@@ -1376,8 +1394,8 @@
             <div class="activity-header">
               <div class="activity-icon">🏝️</div>
               <div>
-                <div class="activity-title">Isla Fuerte ⭐ IMPERDIBLE</div>
-                <div class="activity-desc">Paraíso caribeño a 30 min en lancha. Snorkel, buceo, playas paradisíacas.</div>
+                <div class="activity-title" data-i18n="act.islaFuerte.titulo">Isla Fuerte ⭐ IMPERDIBLE</div>
+                <div class="activity-desc" data-i18n="act.islaFuerte.desc">Paraíso caribeño a 30 min en lancha. Snorkel, buceo, playas paradisíacas.</div>
                 <div class="activity-distance">📍 Puerto Paso Nuevo</div>
                 <div class="mt-2 text-sm">
                   <a href="tel:3022817233" class="activity-contact">📞 Libardo: 302-281-7233</a><br>
@@ -1392,8 +1410,8 @@
             <div class="activity-header">
               <div class="activity-icon">🌋</div>
               <div>
-                <div class="activity-title">Volcán de Lodo</div>
-                <div class="activity-desc">Baño termal en lodo volcánico con propiedades terapéuticas. Llevar ropa vieja.</div>
+                <div class="activity-title" data-i18n="act.volcan.titulo">Volcán de Lodo</div>
+                <div class="activity-desc" data-i18n="act.volcan.desc">Baño termal en lodo volcánico con propiedades terapéuticas. Llevar ropa vieja.</div>
                 <div class="activity-distance">📍 8.5 km hacia Moñitos</div>
               </div>
             </div>
@@ -1403,8 +1421,8 @@
             <div class="activity-header">
               <div class="activity-icon">⛵</div>
               <div>
-                <div class="activity-title">Muelle Turístico</div>
-                <div class="activity-desc">Paseo imperdible. Avistamiento de delfines al atardecer, fotos, restaurantes con vista al mar.</div>
+                <div class="activity-title" data-i18n="act.muelle.titulo">Muelle Turístico</div>
+                <div class="activity-desc" data-i18n="act.muelle.desc">Paseo imperdible. Avistamiento de delfines al atardecer, fotos, restaurantes con vista al mar.</div>
                 <div class="activity-distance">📍 2 km</div>
               </div>
             </div>
@@ -1414,19 +1432,19 @@
             <div class="activity-header">
               <div class="activity-icon">🏄</div>
               <div>
-                <div class="activity-title">Surf</div>
-                <div class="activity-desc">San Bernardo es destino de surfistas. Olas para principiantes e intermedios. Alquiler de tablas en el muelle.</div>
+                <div class="activity-title" data-i18n="act.surf.titulo">Surf</div>
+                <div class="activity-desc" data-i18n="act.surf.desc">San Bernardo es destino de surfistas. Olas para principiantes e intermedios. Alquiler de tablas en el muelle.</div>
               </div>
             </div>
           </div>
           
           <div class="card card-cyan mt-3">
-            <h4 class="text-cyan-800 mb-2">Más destinos cercanos:</h4>
+            <h4 class="text-cyan-800 mb-2" data-i18n="act.masDestinos">Más destinos cercanos:</h4>
             <ul class="text-sm text-cyan-700">
-              <li>• Bahía de Cispatá y manglares (Oswaldo: 314-502-5942)</li>
-              <li>• Paseos por manglares, espejos de agua y desembocadura del río Sinú (317-738-1682 / 311-238-2471)</li>
-              <li>• Ruta Cultural: Lorica, Momil, Tuchín (artesanías)</li>
-              <li>• Isla Múcura y Tintipán</li>
+              <li data-i18n="act.dest1">• Bahía de Cispatá y manglares (Oswaldo: 314-502-5942)</li>
+              <li data-i18n="act.dest2">• Paseos por manglares, espejos de agua y desembocadura del río Sinú (317-738-1682 / 311-238-2471)</li>
+              <li data-i18n="act.dest3">• Ruta Cultural: Lorica, Momil, Tuchín (artesanías)</li>
+              <li data-i18n="act.dest4">• Isla Múcura y Tintipán</li>
             </ul>
           </div>
         </div>
@@ -1438,13 +1456,13 @@
       <button class="section-header normal" onclick="toggleSection('sec-transporte')">
         <span class="section-header-left">
           <span class="section-header-icon">🚗</span>
-          <span>Transporte</span>
+          <span data-i18n="sec.transporte">Transporte</span>
         </span>
         <span class="chevron">▼</span>
       </button>
       <div class="section-content">
         <div class="section-inner">
-          <h4 class="text-gray-700 mb-3">Servicio privado Montería ↔ San Bernardo:</h4>
+          <h4 class="text-gray-700 mb-3" data-i18n="trans.servicio">Servicio privado Montería ↔ San Bernardo:</h4>
           
           <a href="tel:3124829708" class="contact-card card-blue">
             <div>
@@ -1481,19 +1499,19 @@
           <a href="tel:3205552373" class="contact-card card-blue">
             <div>
               <div class="contact-name">Fabio</div>
-              <div class="contact-desc">Transporte Lorica-La Caracola (carro particular)</div>
+              <div class="contact-desc" data-i18n="trans.fabioLargo">Transporte Lorica-La Caracola (carro particular)</div>
             </div>
             <span class="text-blue-600">📞 320-555-2373</span>
           </a>
           
           <div class="card card-gray mt-3">
-            <p class="text-sm text-gray-600">
+            <p class="text-sm text-gray-600" data-i18n="trans.distancia">
               <strong>📍 Distancia:</strong> 78 km (~1.5 horas)
             </p>
-            <p class="text-sm text-gray-600 mt-2">
+            <p class="text-sm text-gray-600 mt-2" data-i18n="trans.mototaxis">
               <strong>🏍️ Moto-taxis:</strong> Gordito (311-371-0525) o Julio César (314-706-1602)
             </p>
-            <p class="text-sm text-gray-600 mt-2">
+            <p class="text-sm text-gray-600 mt-2" data-i18n="trans.gasolinera">
               <strong>⛽ Gasolinera:</strong> Texaco a 500m
             </p>
           </div>
@@ -1506,7 +1524,7 @@
       <button class="section-header normal" onclick="toggleSection('sec-servicios')">
         <span class="section-header-left">
           <span class="section-header-icon">📞</span>
-          <span>Servicios Locales</span>
+          <span data-i18n="sec.servicios">Servicios Locales</span>
         </span>
         <span class="chevron">▼</span>
       </button>
@@ -1515,7 +1533,7 @@
           <a href="tel:3006676277" class="contact-card card-green">
             <div>
               <div class="contact-name">🛒 Edwin - Compras a domicilio</div>
-              <div class="contact-desc">Huevos, queso, pollo, carne fresca</div>
+              <div class="contact-desc" data-i18n="serv.edwin.desc">Huevos, queso, pollo, carne fresca</div>
             </div>
             <span class="contact-phone text-green-600">300-667-6277</span>
           </a>
@@ -1523,7 +1541,7 @@
           <a href="tel:3022048383" class="contact-card card-purple">
             <div>
               <div class="contact-name">🧹 Janis - Limpieza / Cocina</div>
-              <div class="contact-desc">Aseo, platos típicos costeños</div>
+              <div class="contact-desc" data-i18n="serv.janis.desc">Aseo, platos típicos costeños</div>
             </div>
             <span class="contact-phone text-purple-600">302-204-8383</span>
           </a>
@@ -1531,7 +1549,7 @@
           <a href="tel:3044413381" class="contact-card card-purple">
             <div>
               <div class="contact-name">🧹 Gloria Castro - Limpieza / Cocina</div>
-              <div class="contact-desc">Aseo y cocina</div>
+              <div class="contact-desc" data-i18n="serv.gloria.desc">Aseo y cocina</div>
             </div>
             <span class="contact-phone text-purple-600">304-441-3381</span>
           </a>
@@ -1539,7 +1557,7 @@
           <a href="tel:3113936590" class="contact-card card-cyan">
             <div>
               <div class="contact-name">🐬 Adonilson - Tours Cienaguita</div>
-              <div class="contact-desc">Paseos en lancha, chigüiros</div>
+              <div class="contact-desc" data-i18n="serv.adonilson.desc">Paseos en lancha, chigüiros</div>
             </div>
             <span class="contact-phone text-cyan-700">311-393-6590</span>
           </a>
@@ -1547,7 +1565,7 @@
           <a href="tel:3145364928" class="contact-card card-blue">
             <div>
               <div class="contact-name">🐟 Gordis - Pescadería</div>
-              <div class="contact-desc">Pescado y mariscos frescos</div>
+              <div class="contact-desc" data-i18n="serv.gordis.desc">Pescado y mariscos frescos</div>
             </div>
             <span class="contact-phone text-blue-600">314-536-4928</span>
           </a>
@@ -1555,7 +1573,7 @@
           <a href="tel:3116490071" class="contact-card card-red">
             <div>
               <div class="contact-name">🥩 Carnes El Gordo</div>
-              <div class="contact-desc">Carnicería</div>
+              <div class="contact-desc" data-i18n="serv.carnes.desc">Carnicería</div>
             </div>
             <span class="contact-phone text-red-600">311-649-0071</span>
           </a>
@@ -1563,7 +1581,7 @@
           <a href="tel:3116546816" class="contact-card card-amber">
             <div>
               <div class="contact-name">⛽ Leanis y Alexander Montes</div>
-              <div class="contact-desc">Gas propano, vivero y pescado</div>
+              <div class="contact-desc" data-i18n="serv.leanis.desc">Gas propano, vivero y pescado</div>
             </div>
             <span class="contact-phone text-amber-700">311-654-6816</span>
           </a>
@@ -1571,7 +1589,7 @@
           <a href="tel:3108023296" class="contact-card card-green">
             <div>
               <div class="contact-name">🛒 Tienda La Bendición</div>
-              <div class="contact-desc">Víveres y productos de aseo (domicilios)</div>
+              <div class="contact-desc" data-i18n="serv.tienda.desc">Víveres y productos de aseo (domicilios)</div>
             </div>
             <span class="contact-phone text-green-600">310-802-3296</span>
           </a>
@@ -1579,7 +1597,7 @@
           <a href="tel:3215567419" class="contact-card card-amber">
             <div>
               <div class="contact-name">🍕 Súper Pizza San Bernardo</div>
-              <div class="contact-desc">Pizza - Nequi disponible</div>
+              <div class="contact-desc" data-i18n="serv.pizza.desc">Pizza - Nequi disponible</div>
             </div>
             <span class="contact-phone text-amber-700">321-556-7419</span>
           </a>
@@ -1592,57 +1610,57 @@
       <button class="section-header normal" onclick="toggleSection('sec-checkout')">
         <span class="section-header-left">
           <span class="section-header-icon">✅</span>
-          <span>Check-out</span>
+          <span data-i18n="sec.checkout">Check-out</span>
         </span>
         <span class="chevron">▼</span>
       </button>
       <div class="section-content">
         <div class="section-inner">
-          <p class="text-sm text-gray-600 mb-4">
+          <p class="text-sm text-gray-600 mb-4" data-i18n="checkout.instruccion">
             Antes de salir, por favor verifique:
           </p>
           
           <div id="checkout-list">
             <button class="checkout-item" data-item="vajilla" onclick="toggleCheckout(this)">
               <span class="checkout-box"></span>
-              <span class="checkout-label">Lavar y guardar toda la vajilla</span>
+              <span class="checkout-label" data-i18n="checkout.vajilla">Lavar y guardar toda la vajilla</span>
             </button>
             <button class="checkout-item" data-item="basuras" onclick="toggleCheckout(this)">
               <span class="checkout-box"></span>
-              <span class="checkout-label">Botar basuras en contenedores</span>
+              <span class="checkout-label" data-i18n="checkout.basuras">Botar basuras en contenedores</span>
             </button>
             <button class="checkout-item" data-item="ac" onclick="toggleCheckout(this)">
               <span class="checkout-box"></span>
-              <span class="checkout-label">Apagar A/C y ventiladores</span>
+              <span class="checkout-label" data-i18n="checkout.ac">Apagar A/C y ventiladores</span>
             </button>
             <button class="checkout-item" data-item="luces" onclick="toggleCheckout(this)">
               <span class="checkout-box"></span>
-              <span class="checkout-label">Apagar todas las luces</span>
+              <span class="checkout-label" data-i18n="checkout.luces">Apagar todas las luces</span>
             </button>
             <button class="checkout-item" data-item="puertas" onclick="toggleCheckout(this)">
               <span class="checkout-box"></span>
-              <span class="checkout-label">Cerrar puertas y ventanas</span>
+              <span class="checkout-label" data-i18n="checkout.puertas">Cerrar puertas y ventanas</span>
             </button>
             <button class="checkout-item" data-item="gas" onclick="toggleCheckout(this)">
               <span class="checkout-box"></span>
-              <span class="checkout-label">Cerrar llave de gas</span>
+              <span class="checkout-label" data-i18n="checkout.gas">Cerrar llave de gas</span>
             </button>
             <button class="checkout-item" data-item="llaves" onclick="toggleCheckout(this)">
               <span class="checkout-box"></span>
-              <span class="checkout-label">Dejar llaves según instrucciones</span>
+              <span class="checkout-label" data-i18n="checkout.llaves">Dejar llaves según instrucciones</span>
             </button>
             <button class="checkout-item" data-item="mensaje" onclick="toggleCheckout(this)">
               <span class="checkout-box"></span>
-              <span class="checkout-label">Enviar mensaje confirmando salida</span>
+              <span class="checkout-label" data-i18n="checkout.mensaje">Enviar mensaje confirmando salida</span>
             </button>
           </div>
           
           <div id="checkout-progress" class="checkout-progress">
-            <span id="progress-count">0</span> de 8 completados
+            <span id="progress-count">0</span> <span data-i18n="checkout.de">de</span> 8 <span data-i18n="checkout.completados">completados</span>
           </div>
           
           <div id="checkout-complete" class="checkout-complete" style="display: none;">
-            <p class="checkout-complete-text">✅ ¡Todo listo! Gracias por su estadía</p>
+            <p class="checkout-complete-text" data-i18n="checkout.completo">✅ ¡Todo listo! Gracias por su estadía</p>
             <a href="https://wa.me/573116184376?text=Hola%20Lina!%20Ya%20salimos%20de%20Casa%20La%20Arboleda.%20Todo%20qued%C3%B3%20en%20orden.%20Gracias!" 
                class="btn btn-green mt-3" style="display: inline-flex; width: auto;">
               💬 Confirmar salida por WhatsApp
@@ -1654,16 +1672,482 @@
 
     <!-- Footer mensaje -->
     <div class="footer-card">
-      <div class="footer-title">🌴 ¡Disfruten su estadía! 🌴</div>
-      <div class="footer-text">Relájense, desconéctense y vivan el Caribe colombiano al máximo.</div>
-      <div class="footer-signature">Con cariño, Lina María 🏖️</div>
+      <div class="footer-title" data-i18n="footer.titulo">🌴 ¡Disfruten su estadía! 🌴</div>
+      <div class="footer-text" data-i18n="footer.texto">Relájense, desconéctense y vivan el Caribe colombiano al máximo.</div>
+      <div class="footer-signature" data-i18n="footer.firma">Con cariño, Lina María 🏖️</div>
     </div>
 
   </main>
 
   <!-- Botones flotantes -->
-  <a href="tel:123" class="floating-btn floating-emergency" title="Emergencias 123">⚠️</a>
-  <a href="https://wa.me/573116184376" class="floating-btn floating-whatsapp" title="WhatsApp Anfitriona">💬</a>
+  <a href="tel:123" class="floating-btn floating-emergency" data-i18n-title="float.emergency" title="Emergencias 123">⚠️</a>
+  <a href="https://wa.me/573116184376" class="floating-btn floating-whatsapp" data-i18n-title="float.whatsapp" title="WhatsApp Anfitriona">💬</a>
+
+  
+  <script>
+    // ============================================================
+    // VERIFICACIÓN DE INTEGRIDAD — bloque i18n
+    // ✅ GOOGLE_SCRIPT_URL: sin cambios (conservada abajo en el script original)
+    // ✅ Claves del payload intactas: nombre_completo, tipo_documento,
+    //    numero_documento, fecha_nacimiento, nacionalidad, ciudad_residencia,
+    //    pais_residencia, telefono, email, fecha_llegada, fecha_salida,
+    //    num_acompanantes, motivo_viaje  — solo los <option> text visible se traducen.
+    // ✅ CSS: cero cambios al bloque <style> original (solo se añadió .lang-btn).
+    // ✅ Acordeones y checkboxes: applyLang() opera solo sobre textContent /
+    //    innerHTML del objeto i18n controlado y atributos; no toca clases ni
+    //    estado de .open / .checked.
+    // ============================================================
+
+    const i18n = {
+      es: {
+        'page.title': 'Casa La Arboleda - Guía de Bienvenida',
+        'page.meta': 'Guía digital de huéspedes de Casa La Arboleda, San Bernardo del Viento',
+        'header.subtitle': '📍 Condominio La Caracola',
+        'header.capacity': '👥 10 personas',
+        'header.beach': '🌊 Playa a 750m',
+        'sec.bienvenida': 'Bienvenida',
+        'sec.registro': 'Registro de Huéspedes',
+        'sec.comoLlegar': 'Cómo Llegar',
+        'sec.llaves': 'Llaves y Acceso',
+        'sec.wifi': 'Conectividad',
+        'sec.habitaciones': 'Habitaciones',
+        'sec.cocina': 'Cocina',
+        'sec.agua': 'AGUA - IMPORTANTE',
+        'sec.playa': 'Playa y Piscina',
+        'sec.normas': 'Normas del Condominio',
+        'sec.emergencias': 'Emergencias',
+        'sec.restaurantes': 'Restaurantes',
+        'sec.actividades': 'Actividades',
+        'sec.transporte': 'Transporte',
+        'sec.servicios': 'Servicios Locales',
+        'sec.checkout': 'Check-out',
+        'bienvenida.intro': '¡Bienvenidos a <strong>Casa La Arboleda</strong>! Esta es su casa durante su estadía en el hermoso San Bernardo del Viento. 🌴',
+        'bienvenida.hostTitle': '❤️ Su Anfitriona',
+        'registro.notice': '<strong>📋 Requisito MinCIT:</strong> Por favor complete este registro obligatorio para todos los huéspedes mayores de edad.',
+        'form.nombreCompleto': 'Nombre completo *',
+        'form.ph.nombreCompleto': 'Como aparece en su documento',
+        'form.tipoDoc': 'Tipo documento *',
+        'form.select': 'Seleccione...',
+        'form.doc.CC': 'Cédula de Ciudadanía',
+        'form.doc.CE': 'Cédula de Extranjería',
+        'form.doc.PA': 'Pasaporte',
+        'form.doc.TI': 'Tarjeta de Identidad',
+        'form.doc.PEP': 'PEP',
+        'form.numDoc': 'Número documento *',
+        'form.ph.numDoc': 'Sin puntos ni espacios',
+        'form.fechaNac': 'Fecha nacimiento *',
+        'form.nacionalidad': 'Nacionalidad *',
+        'form.ph.nacionalidad': 'Ej: Colombiana',
+        'form.ciudadRes': 'Ciudad de residencia *',
+        'form.ph.ciudadRes': 'Ej: Medellín',
+        'form.paisRes': 'País de residencia *',
+        'form.telefono': 'Teléfono *',
+        'form.email': 'Email',
+        'form.ph.email': 'correo@ejemplo.com',
+        'form.fechaLlegada': 'Fecha llegada *',
+        'form.fechaSalida': 'Fecha salida *',
+        'form.acompanantes': 'Acompañantes',
+        'form.motivo': 'Motivo del viaje *',
+        'form.motivo.turismo': 'Turismo / Vacaciones',
+        'form.motivo.negocios': 'Negocios',
+        'form.motivo.familia': 'Visita familiar',
+        'form.motivo.otro': 'Otro',
+        'form.btnEnviar': '📤 Enviar Registro',
+        'form.enviando': '⏳ Enviando...',
+        'form.exito': '✅ ¡Registro enviado exitosamente! Gracias por completar sus datos.',
+        'form.error': '❌ Error al enviar. Por favor intente nuevamente o contacte a la anfitriona.',
+        'llegar.destino': '<strong>📍 Destino:</strong> Urbanización La Caracola (Lote 42)<br>Km 8, vía San Bernardo del Viento → Moñitos, Córdoba',
+        'llegar.desdeMonteria': '🚗 Desde Montería (dos rutas):',
+        'llegar.ruta1': 'Ruta 1: Vía Santa Lucía (Recomendada)',
+        'llegar.r1.tiempo': '⏱️ <strong>Tiempo:</strong> ~1 hora 30 minutos',
+        'llegar.r1.peajes': '💰 <strong>Peajes:</strong> Sin peajes',
+        'llegar.r1.estado': '🛣️ <strong>Estado:</strong> En construcción pero adelantada. Sin huecos. Algunos tramos destapados en buen estado.',
+        'llegar.ruta2': 'Ruta 2: Vía Lorica',
+        'llegar.r2.tiempo': '⏱️ <strong>Tiempo:</strong> ~1 hora 45 minutos',
+        'llegar.r2.peajes': '💰 <strong>Peajes:</strong> 2 peajes',
+        'llegar.r2.estado': '🛣️ <strong>Estado:</strong> Bien pavimentada hasta Lorica. Mal estado con huecos entre Lorica y San Bernardo.',
+        'llegar.aeropuerto': '✈️ Desde el Aeropuerto',
+        'llegar.aero.desc': 'Si vienen sin carro, coordinen con los transportadores para que los recojan en el aeropuerto.',
+        'llegar.aero.precio': '<strong>💵 Precio:</strong> $200,000 - $250,000 COP por trayecto (hasta 4 personas)',
+        'llegar.aero.tip': '💡 Pueden coordinar mercado en Montería o Lorica en el camino.',
+        'llegar.transportadores': '📞 Transportadores de confianza:',
+        'trans.marioVilla': 'Vive en Lorica - Persona de confianza',
+        'trans.hector': 'Taxi Montería-Lorica-La Caracola',
+        'trans.fabio': 'Transporte Lorica-La Caracola',
+        'trans.fabioLargo': 'Transporte Lorica-La Caracola (carro particular)',
+        'trans.servicio': 'Servicio privado Montería ↔ San Bernardo:',
+        'trans.distancia': '<strong>📍 Distancia:</strong> 78 km (~1.5 horas)',
+        'trans.mototaxis': '<strong>🏍️ Moto-taxis:</strong> Gordito (311-371-0525) o Julio César (314-706-1602)',
+        'trans.gasolinera': '<strong>⛽ Gasolinera:</strong> Texaco a 500m',
+        'llaves.ubicacion': '<strong>📍 Ubicación:</strong> Todas las llaves se encuentran en el <strong>llavero sobre la mesa</strong>.',
+        'llaves.control.titulo': 'Control de acceso La Caracola',
+        'llaves.control.desc': 'Control cuadrado - Abre la puerta de entrada a la urbanización',
+        'llaves.vehicular.titulo': 'Puerta vehicular y peatonal',
+        'llaves.vehicular.desc': 'Llave del candado para acceso a la casa',
+        'llaves.cocina.titulo': 'Puerta de la cocina',
+        'llaves.cocina.desc': 'Llave de acceso a la cocina',
+        'llaves.playa.titulo': 'Acceso a la playa',
+        'llaves.playa.desc': 'Llave para la salida directa a la playa',
+        'llaves.tip': '<strong>💡 Tip:</strong> Al salir, asegúrese de cerrar bien todos los candados y devolver las llaves al llavero sobre la mesa.',
+        'wifi.noWifi': 'NO hay WiFi en la casa',
+        'wifi.sim.titulo': '📱 Alternativa: SIM Card Tigo',
+        'wifi.sim.desc': 'Hay una tarjeta SIM prepago Tigo disponible si la necesitan:',
+        'wifi.cobertura': '<strong>📱 Mejor señal celular:</strong> Tigo tiene la mejor cobertura en la zona. Claro y Movistar tienen señal moderada. Mejor señal cerca del muelle (2 km).',
+        'hab.principal.nombre': 'Habitación Principal',
+        'hab.principal.cama': '1 cama doble (Queen/King)',
+        'hab.ac': '❄️ A/C',
+        'hab.principal.cap': '👥 Capacidad: 2 personas',
+        'hab.huesped1.nombre': 'Habitación Huéspedes 1',
+        'hab.huesped2.nombre': 'Habitación Huéspedes 2',
+        'hab.huesped.cama': '1 cama doble + camarote (2 sencillas)',
+        'hab.ventilador': '🌀 Ventilador',
+        'hab.huesped.cap': '👥 Capacidad: 4 personas',
+        'hab.total': '🏠 Total: 10 personas cómodamente',
+        'app.nevera': 'Nevera', 'app.nevera.tip': 'Nivel 3-4',
+        'app.estufa': 'Estufa', 'app.estufa.tip': 'Gas propano',
+        'app.micro': 'Microondas', 'app.micro.tip': 'Máx 5 min',
+        'app.licua': 'Licuadora', 'app.licua.tip': 'Usar tapa',
+        'app.cafe': 'Cafetera',
+        'app.arroz': 'Olla Arrocera', 'app.arroz.tip': '1:2 arroz/agua',
+        'cocina.incluye': '<strong>🍴 Incluye:</strong> Vajilla completa para 10 personas, ollas, sartenes, cubiertos, tabla de cortar, abrelatas, sacacorchos.',
+        'cocina.gas': '<strong>⚠️ Gas:</strong> Si huelen a gas, cerrar llave principal en el cuarto útil y contactar anfitriona.',
+        'agua.titulo': 'EL AGUA DEL GRIFO NO ES POTABLE',
+        'agua.noBeber': 'NO beber del grifo',
+        'agua.noBeber.sub': 'Ni agua de la ducha o llave',
+        'agua.usarPara': 'Solo usar para:',
+        'agua.uso1': '• Ducharse', 'agua.uso2': '• Lavar platos',
+        'agua.uso3': '• Cocinar (hirviendo 5+ minutos)',
+        'agua.paraBeber': 'Para beber:',
+        'agua.paraBeber.desc': 'Comprar agua embotellada en el centro de San Bernardo (2 km). Recomendación: garrafones grandes (más económico).',
+        'playa.titulo': '🌊 Playa',
+        'playa.distancia': '<strong>Distancia:</strong> 750m',
+        'playa.tiempo': '<strong>Tiempo:</strong> 10 min a pie / 2 min en carro',
+        'playa.desc': 'Arena suave, olas tranquilas, ideal para familias. 🏄 San Bernardo es famoso por el surf.',
+        'playa.amenidades': '<strong>🏖️ Amenidades:</strong> Pueden usar 2 quioscos y 2 enramadas que pertenecen a la urbanización.',
+        'piscina.titulo': '🏊 Piscina del Condominio',
+        'piscina.horario': '<strong>Horario:</strong> 9:00 AM - 9:00 PM',
+        'piscina.r1': '• Ducharse antes de entrar', 'piscina.r2': '• NO vidrio en el área', 'piscina.r3': '• Niños siempre supervisados',
+        'playa.seguridad': '<strong>⚠️ Seguridad:</strong> No nadar solos. Cuidado con corrientes. No nadar bajo efectos del alcohol ni de noche.',
+        'norma.silencio': 'Horario de silencio: 10PM - 7AM',
+        'norma.velocidad': 'Velocidad máxima: 20 km/h',
+        'norma.identificarse': 'Identificarse con vigilancia al entrar',
+        'norma.visitas': 'Registrar visitas en portería',
+        'norma.basuras': 'Basuras en contenedores designados',
+        'norma.cortesia': 'Saludar y ser cortés con vecinos',
+        'norma.vigilancia': '🛡️ <strong>Vigilancia 24/7</strong> en entrada del condominio',
+        'emerg.policia': 'Policía', 'emerg.ambulancia': 'Ambulancia',
+        'emerg.bomberos': 'Bomberos', 'emerg.defensaCivil': 'Defensa Civil',
+        'emerg.energia': '<strong>⚡ Corte de energía:</strong> Afinia 018000 114 011',
+        'emerg.vecino.sub': 'Vive enfrente. Contactar para cualquier asunto relacionado con la casa.',
+        'emerg.conserje.sub': 'Vive en la urbanización. Avisarle cuando se saque basura.',
+        'emerg.contactarAnfitriona': '💬 Contactar anfitriona (24/7)',
+        'rest.tambos.desc': 'Mariscos frescos, comida típica costeña',
+        'rest.tambos.ubicacion': '📍 300m sobre la carretera a Moñitos | 💰 $$ - $$$',
+        'rest.tambos.reco': '<strong>Recomendación:</strong> Pargo rojo frito, arroz con coco',
+        'rest.mirador.desc': 'Hotel y restaurante con una bella vista. Menú diario y comida a la carta.',
+        'rest.mirador.ubicacion': '📍 A 15 minutos en carro, vía a Moñitos | 💰 $$ - $$$',
+        'rest.domicilio.titulo': '🍲 Almuerzos a domicilio',
+        'rest.domicilio.desc': 'Jhamer Bravo - Almuerzos caseros',
+        'rest.platos.titulo': '🍴 Platos típicos que probar:',
+        'rest.plato1': '🦞 Pargo rojo frito', 'rest.plato2': '🍚 Arroz con coco',
+        'rest.plato3': '🦐 Cazuela de mariscos', 'rest.plato4': '🥥 Limonada de coco',
+        'act.cienaguita.titulo': 'La Cienaguita',
+        'act.cienaguita.desc': 'Laguna natural con chigüiros. Paseos en lancha, avistamiento de fauna, fotografía.',
+        'act.islaFuerte.titulo': 'Isla Fuerte ⭐ IMPERDIBLE',
+        'act.islaFuerte.desc': 'Paraíso caribeño a 30 min en lancha. Snorkel, buceo, playas paradisíacas.',
+        'act.volcan.titulo': 'Volcán de Lodo',
+        'act.volcan.desc': 'Baño termal en lodo volcánico con propiedades terapéuticas. Llevar ropa vieja.',
+        'act.muelle.titulo': 'Muelle Turístico',
+        'act.muelle.desc': 'Paseo imperdible. Avistamiento de delfines al atardecer, fotos, restaurantes con vista al mar.',
+        'act.surf.titulo': 'Surf',
+        'act.surf.desc': 'San Bernardo es destino de surfistas. Olas para principiantes e intermedios. Alquiler de tablas en el muelle.',
+        'act.masDestinos': 'Más destinos cercanos:',
+        'act.dest1': '• Bahía de Cispatá y manglares (Oswaldo: 314-502-5942)',
+        'act.dest2': '• Paseos por manglares, espejos de agua y desembocadura del río Sinú (317-738-1682 / 311-238-2471)',
+        'act.dest3': '• Ruta Cultural: Lorica, Momil, Tuchín (artesanías)',
+        'act.dest4': '• Isla Múcura y Tintipán',
+        'serv.edwin.desc': 'Huevos, queso, pollo, carne fresca',
+        'serv.janis.desc': 'Aseo, platos típicos costeños',
+        'serv.gloria.desc': 'Aseo y cocina',
+        'serv.adonilson.desc': 'Paseos en lancha, chigüiros',
+        'serv.gordis.desc': 'Pescado y mariscos frescos',
+        'serv.carnes.desc': 'Carnicería',
+        'serv.leanis.desc': 'Gas propano, vivero y pescado',
+        'serv.tienda.desc': 'Víveres y productos de aseo (domicilios)',
+        'serv.pizza.desc': 'Pizza - Nequi disponible',
+        'checkout.instruccion': 'Antes de salir, por favor verifique:',
+        'checkout.vajilla': 'Lavar y guardar toda la vajilla',
+        'checkout.basuras': 'Botar basuras en contenedores',
+        'checkout.ac': 'Apagar A/C y ventiladores',
+        'checkout.luces': 'Apagar todas las luces',
+        'checkout.puertas': 'Cerrar puertas y ventanas',
+        'checkout.gas': 'Cerrar llave de gas',
+        'checkout.llaves': 'Dejar llaves según instrucciones',
+        'checkout.mensaje': 'Enviar mensaje confirmando salida',
+        'checkout.de': 'de', 'checkout.completados': 'completados',
+        'checkout.completo': '✅ ¡Todo listo! Gracias por su estadía',
+        'checkout.confirmarWA': '💬 Confirmar salida por WhatsApp',
+        'footer.titulo': '🌴 ¡Disfruten su estadía! 🌴',
+        'footer.texto': 'Relájense, desconéctense y vivan el Caribe colombiano al máximo.',
+        'footer.firma': 'Con cariño, Lina María 🏖️',
+        'float.emergency': 'Emergencias 123',
+        'float.whatsapp': 'WhatsApp Anfitriona',
+      },
+      en: {
+        'page.title': 'Casa La Arboleda - Welcome Guide',
+        'page.meta': 'Digital guest guide for Casa La Arboleda, San Bernardo del Viento',
+        'header.subtitle': '📍 La Caracola Condo',
+        'header.capacity': '👥 10 guests',
+        'header.beach': '🌊 Beach 750m away',
+        'sec.bienvenida': 'Welcome',
+        'sec.registro': 'Guest Registration',
+        'sec.comoLlegar': 'How to Get Here',
+        'sec.llaves': 'Keys & Access',
+        'sec.wifi': 'Connectivity',
+        'sec.habitaciones': 'Bedrooms',
+        'sec.cocina': 'Kitchen',
+        'sec.agua': 'WATER - IMPORTANT',
+        'sec.playa': 'Beach & Pool',
+        'sec.normas': 'Condo Rules',
+        'sec.emergencias': 'Emergencies',
+        'sec.restaurantes': 'Restaurants',
+        'sec.actividades': 'Activities',
+        'sec.transporte': 'Transportation',
+        'sec.servicios': 'Local Services',
+        'sec.checkout': 'Check-out',
+        'bienvenida.intro': 'Welcome to <strong>Casa La Arboleda</strong>! This is your home during your stay in beautiful San Bernardo del Viento. 🌴',
+        'bienvenida.hostTitle': '❤️ Your Host',
+        'registro.notice': '<strong>📋 MinCIT Requirement:</strong> Please complete this mandatory registration for all adult guests.',
+        'form.nombreCompleto': 'Full name *',
+        'form.ph.nombreCompleto': 'As it appears on your ID',
+        'form.tipoDoc': 'ID type *',
+        'form.select': 'Select...',
+        'form.doc.CC': 'Colombian National ID',
+        'form.doc.CE': 'Foreign ID Card',
+        'form.doc.PA': 'Passport',
+        'form.doc.TI': 'Identity Card',
+        'form.doc.PEP': 'PEP',
+        'form.numDoc': 'ID number *',
+        'form.ph.numDoc': 'No dots or spaces',
+        'form.fechaNac': 'Date of birth *',
+        'form.nacionalidad': 'Nationality *',
+        'form.ph.nacionalidad': 'E.g.: Colombian',
+        'form.ciudadRes': 'City of residence *',
+        'form.ph.ciudadRes': 'E.g.: Medellín',
+        'form.paisRes': 'Country of residence *',
+        'form.telefono': 'Phone *',
+        'form.email': 'Email',
+        'form.ph.email': 'email@example.com',
+        'form.fechaLlegada': 'Check-in date *',
+        'form.fechaSalida': 'Check-out date *',
+        'form.acompanantes': 'Companions',
+        'form.motivo': 'Purpose of trip *',
+        'form.motivo.turismo': 'Tourism / Vacation',
+        'form.motivo.negocios': 'Business',
+        'form.motivo.familia': 'Family visit',
+        'form.motivo.otro': 'Other',
+        'form.btnEnviar': '📤 Submit Registration',
+        'form.enviando': '⏳ Sending...',
+        'form.exito': '✅ Registration submitted successfully! Thank you for completing your information.',
+        'form.error': '❌ Error sending. Please try again or contact the host.',
+        'llegar.destino': '<strong>📍 Destination:</strong> Urbanización La Caracola (Lot 42)<br>Km 8, road San Bernardo del Viento → Moñitos, Córdoba',
+        'llegar.desdeMonteria': '🚗 From Montería (two routes):',
+        'llegar.ruta1': 'Route 1: Via Santa Lucía (Recommended)',
+        'llegar.r1.tiempo': '⏱️ <strong>Time:</strong> ~1 hour 30 minutes',
+        'llegar.r1.peajes': '💰 <strong>Tolls:</strong> No tolls',
+        'llegar.r1.estado': '🛣️ <strong>Condition:</strong> Under construction but well advanced. No potholes. Some unpaved stretches in good condition.',
+        'llegar.ruta2': 'Route 2: Via Lorica',
+        'llegar.r2.tiempo': '⏱️ <strong>Time:</strong> ~1 hour 45 minutes',
+        'llegar.r2.peajes': '💰 <strong>Tolls:</strong> 2 tolls',
+        'llegar.r2.estado': '🛣️ <strong>Condition:</strong> Well paved to Lorica. Poor condition with potholes between Lorica and San Bernardo.',
+        'llegar.aeropuerto': '✈️ From the Airport',
+        'llegar.aero.desc': 'If you are coming without a car, coordinate with the drivers to be picked up at the airport.',
+        'llegar.aero.precio': '<strong>💵 Price:</strong> $200,000 - $250,000 COP per trip (up to 4 people)',
+        'llegar.aero.tip': '💡 You can stop for groceries in Montería or Lorica on the way.',
+        'llegar.transportadores': '📞 Trusted drivers:',
+        'trans.marioVilla': 'Lives in Lorica – Trusted driver',
+        'trans.hector': 'Taxi Montería-Lorica-La Caracola',
+        'trans.fabio': 'Transportation Lorica-La Caracola',
+        'trans.fabioLargo': 'Transportation Lorica-La Caracola (private car)',
+        'trans.servicio': 'Private service Montería ↔ San Bernardo:',
+        'trans.distancia': '<strong>📍 Distance:</strong> 78 km (~1.5 hours)',
+        'trans.mototaxis': '<strong>🏍️ Moto-taxis:</strong> Gordito (311-371-0525) or Julio César (314-706-1602)',
+        'trans.gasolinera': '<strong>⛽ Gas station:</strong> Texaco 500m away',
+        'llaves.ubicacion': '<strong>📍 Location:</strong> All keys are on the <strong>key ring on the table</strong>.',
+        'llaves.control.titulo': 'La Caracola access control',
+        'llaves.control.desc': 'Square remote – Opens the main entrance gate of the complex',
+        'llaves.vehicular.titulo': 'Vehicle and pedestrian gate',
+        'llaves.vehicular.desc': 'Padlock key for house access',
+        'llaves.cocina.titulo': 'Kitchen door',
+        'llaves.cocina.desc': 'Key for kitchen access',
+        'llaves.playa.titulo': 'Beach access',
+        'llaves.playa.desc': 'Key for the direct exit to the beach',
+        'llaves.tip': '<strong>💡 Tip:</strong> When leaving, make sure to lock all padlocks and return the keys to the key ring on the table.',
+        'wifi.noWifi': 'NO WiFi at the house',
+        'wifi.sim.titulo': '📱 Alternative: Tigo SIM Card',
+        'wifi.sim.desc': 'A prepaid Tigo SIM card is available if you need it:',
+        'wifi.cobertura': '<strong>📱 Best cell signal:</strong> Tigo has the best coverage in the area. Claro and Movistar have moderate signal. Best signal near the pier (2 km).',
+        'hab.principal.nombre': 'Master Bedroom',
+        'hab.principal.cama': '1 double bed (Queen/King)',
+        'hab.ac': '❄️ A/C',
+        'hab.principal.cap': '👥 Capacity: 2 people',
+        'hab.huesped1.nombre': 'Guest Bedroom 1',
+        'hab.huesped2.nombre': 'Guest Bedroom 2',
+        'hab.huesped.cama': '1 double bed + bunk bed (2 singles)',
+        'hab.ventilador': '🌀 Fan',
+        'hab.huesped.cap': '👥 Capacity: 4 people',
+        'hab.total': '🏠 Total: 10 guests comfortably',
+        'app.nevera': 'Refrigerator', 'app.nevera.tip': 'Level 3-4',
+        'app.estufa': 'Stove', 'app.estufa.tip': 'Propane gas',
+        'app.micro': 'Microwave', 'app.micro.tip': 'Max 5 min',
+        'app.licua': 'Blender', 'app.licua.tip': 'Use the lid',
+        'app.cafe': 'Coffee maker',
+        'app.arroz': 'Rice cooker', 'app.arroz.tip': '1:2 rice/water',
+        'cocina.incluye': '<strong>🍴 Includes:</strong> Full tableware for 10 people, pots, pans, utensils, cutting board, can opener, corkscrew.',
+        'cocina.gas': '<strong>⚠️ Gas:</strong> If you smell gas, close the main valve in the utility room and contact the host.',
+        'agua.titulo': 'TAP WATER IS NOT DRINKABLE',
+        'agua.noBeber': 'DO NOT drink tap water',
+        'agua.noBeber.sub': 'Including shower or faucet water',
+        'agua.usarPara': 'Safe to use for:',
+        'agua.uso1': '• Showering', 'agua.uso2': '• Washing dishes',
+        'agua.uso3': '• Cooking (boiling 5+ minutes)',
+        'agua.paraBeber': 'For drinking:',
+        'agua.paraBeber.desc': 'Buy bottled water in San Bernardo town center (2 km). Recommendation: large jugs (more economical).',
+        'playa.titulo': '🌊 Beach',
+        'playa.distancia': '<strong>Distance:</strong> 750m',
+        'playa.tiempo': '<strong>Time:</strong> 10 min walk / 2 min by car',
+        'playa.desc': 'Soft sand, calm waves, ideal for families. 🏄 San Bernardo is famous for surfing.',
+        'playa.amenidades': '<strong>🏖️ Amenities:</strong> You may use 2 kiosks and 2 sun shelters belonging to the complex.',
+        'piscina.titulo': '🏊 Condo Pool',
+        'piscina.horario': '<strong>Hours:</strong> 9:00 AM - 9:00 PM',
+        'piscina.r1': '• Shower before entering', 'piscina.r2': '• NO glass in the area', 'piscina.r3': '• Children always supervised',
+        'playa.seguridad': '<strong>⚠️ Safety:</strong> Do not swim alone. Watch out for currents. Do not swim under the influence of alcohol or at night.',
+        'norma.silencio': 'Quiet hours: 10PM - 7AM',
+        'norma.velocidad': 'Maximum speed: 20 km/h',
+        'norma.identificarse': 'Identify yourself to security when entering',
+        'norma.visitas': 'Register visitors at the gatehouse',
+        'norma.basuras': 'Trash in designated containers',
+        'norma.cortesia': 'Greet and be courteous to neighbors',
+        'norma.vigilancia': '🛡️ <strong>24/7 Security</strong> at condo entrance',
+        'emerg.policia': 'Police', 'emerg.ambulancia': 'Ambulance',
+        'emerg.bomberos': 'Fire dept.', 'emerg.defensaCivil': 'Civil Defense',
+        'emerg.energia': '<strong>⚡ Power outage:</strong> Afinia 018000 114 011',
+        'emerg.vecino.sub': 'Lives across the street. Contact for any issue related to the house.',
+        'emerg.conserje.sub': 'Lives in the complex. Notify him when taking out trash.',
+        'emerg.contactarAnfitriona': '💬 Contact host (24/7)',
+        'rest.tambos.desc': 'Fresh seafood, traditional coastal cuisine',
+        'rest.tambos.ubicacion': '📍 300m on the road to Moñitos | 💰 $$ - $$$',
+        'rest.tambos.reco': '<strong>Recommendation:</strong> Fried red snapper, coconut rice',
+        'rest.mirador.desc': 'Hotel and restaurant with a beautiful view. Daily menu and à la carte.',
+        'rest.mirador.ubicacion': '📍 15 min by car, road to Moñitos | 💰 $$ - $$$',
+        'rest.domicilio.titulo': '🍲 Home-delivery lunches',
+        'rest.domicilio.desc': 'Jhamer Bravo – Home-cooked lunches',
+        'rest.platos.titulo': '🍴 Local dishes to try:',
+        'rest.plato1': '🦞 Fried red snapper', 'rest.plato2': '🍚 Coconut rice',
+        'rest.plato3': '🦐 Seafood stew', 'rest.plato4': '🥥 Coconut lemonade',
+        'act.cienaguita.titulo': 'La Cienaguita',
+        'act.cienaguita.desc': 'Natural lagoon with capybaras. Boat tours, wildlife watching, photography.',
+        'act.islaFuerte.titulo': 'Isla Fuerte ⭐ MUST SEE',
+        'act.islaFuerte.desc': 'Caribbean paradise 30 min by boat. Snorkeling, diving, pristine beaches.',
+        'act.volcan.titulo': 'Mud Volcano',
+        'act.volcan.desc': 'Thermal mud bath with therapeutic properties. Bring old clothes.',
+        'act.muelle.titulo': 'Tourist Pier',
+        'act.muelle.desc': 'A must-do outing. Dolphin watching at sunset, photos, restaurants with ocean views.',
+        'act.surf.titulo': 'Surfing',
+        'act.surf.desc': "San Bernardo is a surfers' destination. Waves for beginners and intermediates. Board rentals at the pier.",
+        'act.masDestinos': 'More nearby destinations:',
+        'act.dest1': '• Cispatá Bay and mangroves (Oswaldo: 314-502-5942)',
+        'act.dest2': '• Mangrove tours, lagoons and Sinú river mouth (317-738-1682 / 311-238-2471)',
+        'act.dest3': '• Cultural Route: Lorica, Momil, Tuchín (crafts)',
+        'act.dest4': '• Múcura and Tintipán Islands',
+        'serv.edwin.desc': 'Eggs, cheese, chicken, fresh meat',
+        'serv.janis.desc': 'Cleaning, traditional coastal dishes',
+        'serv.gloria.desc': 'Cleaning and cooking',
+        'serv.adonilson.desc': 'Boat tours, capybaras',
+        'serv.gordis.desc': 'Fresh fish and seafood',
+        'serv.carnes.desc': 'Butcher shop',
+        'serv.leanis.desc': 'Propane gas, nursery and fish',
+        'serv.tienda.desc': 'Groceries and cleaning products (delivery)',
+        'serv.pizza.desc': 'Pizza – Nequi accepted',
+        'checkout.instruccion': 'Before leaving, please check:',
+        'checkout.vajilla': 'Wash and put away all dishes',
+        'checkout.basuras': 'Take trash to containers',
+        'checkout.ac': 'Turn off A/C and fans',
+        'checkout.luces': 'Turn off all lights',
+        'checkout.puertas': 'Close doors and windows',
+        'checkout.gas': 'Close the gas valve',
+        'checkout.llaves': 'Leave keys as instructed',
+        'checkout.mensaje': 'Send message confirming departure',
+        'checkout.de': 'of', 'checkout.completados': 'completed',
+        'checkout.completo': '✅ All done! Thank you for your stay',
+        'checkout.confirmarWA': '💬 Confirm departure via WhatsApp',
+        'footer.titulo': '🌴 Enjoy your stay! 🌴',
+        'footer.texto': 'Relax, unplug, and experience the Colombian Caribbean to the fullest.',
+        'footer.firma': 'With love, Lina María 🏖️',
+        'float.emergency': 'Emergency 123',
+        'float.whatsapp': 'WhatsApp Host',
+      }
+    };
+
+    // Estado: localStorage con fallback a variable en memoria
+    let currentLang = 'es';
+    try {
+      const saved = localStorage.getItem('arboleda_lang');
+      if (saved === 'en' || saved === 'es') currentLang = saved;
+    } catch(e) { /* localStorage no disponible */ }
+
+    function applyLang(lang) {
+      const dict = i18n[lang];
+      if (!dict) return;
+      currentLang = lang;
+
+      // Actualizar <html lang>
+      document.documentElement.lang = lang;
+
+      // <title>
+      const titleEl = document.querySelector('[data-i18n-title]');
+      if (titleEl && titleEl.tagName === 'TITLE') titleEl.textContent = dict['page.title'] || titleEl.textContent;
+
+      // <meta name="description">
+      const metaEl = document.querySelector('[data-i18n-meta]');
+      if (metaEl) metaEl.setAttribute('content', dict['page.meta'] || metaEl.getAttribute('content'));
+
+      // Elementos con data-i18n → innerHTML (contenido proviene del objeto i18n, no de usuario)
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+
+      // Placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (dict[key] !== undefined) el.placeholder = dict[key];
+      });
+
+      // Atributos title (botones flotantes) — data-i18n-title en elementos no-TITLE
+      document.querySelectorAll('[data-i18n-title]').forEach(el => {
+        if (el.tagName === 'TITLE') return;
+        const key = el.getAttribute('data-i18n-title');
+        if (dict[key] !== undefined) el.title = dict[key];
+      });
+
+      // Botón toggle: muestra el idioma al que se puede cambiar
+      const btn = document.getElementById('langToggle');
+      if (btn) btn.textContent = lang === 'es' ? 'EN' : 'ES';
+
+      // Persistencia
+      try { localStorage.setItem('arboleda_lang', lang); } catch(e) { /* ok */ }
+    }
+
+    function toggleLang() {
+      applyLang(currentLang === 'es' ? 'en' : 'es');
+    }
+
+    // Aplicar idioma guardado al cargar (complementa el DOMContentLoaded existente)
+    document.addEventListener('DOMContentLoaded', function() {
+      applyLang(currentLang);
+    });
+  </script>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Toggle secciones acordeón
@@ -1766,7 +2250,7 @@
       
       // Deshabilitar botón mientras envía
       btn.disabled = true;
-      btn.innerHTML = '⏳ Enviando...';
+      btn.innerHTML = i18n[currentLang]['form.enviando'] || '⏳ Enviando...';
       mensaje.style.display = 'none';
       
       try {
@@ -1781,7 +2265,7 @@
         
         // Mostrar éxito
         mensaje.className = 'form-mensaje success';
-        mensaje.innerHTML = '✅ ¡Registro enviado exitosamente! Gracias por completar sus datos.';
+        mensaje.innerHTML = i18n[currentLang]['form.exito'] || '✅ ¡Registro enviado exitosamente!';
         mensaje.style.display = 'block';
         form.reset();
         
@@ -1790,13 +2274,13 @@
         
       } catch (error) {
         mensaje.className = 'form-mensaje error';
-        mensaje.innerHTML = '❌ Error al enviar. Por favor intente nuevamente o contacte a la anfitriona.';
+        mensaje.innerHTML = i18n[currentLang]['form.error'] || '❌ Error al enviar.';
         mensaje.style.display = 'block';
       }
       
       // Rehabilitar botón
       btn.disabled = false;
-      btn.innerHTML = '📤 Enviar Registro';
+      btn.innerHTML = i18n[currentLang]['form.btnEnviar'] || '📤 Enviar Registro';
     }
   </script>
 </body>
